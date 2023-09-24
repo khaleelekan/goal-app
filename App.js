@@ -3,11 +3,21 @@ import { StyleSheet, Text, View,Button,TextInput } from 'react-native';
 
 
 export default function App() {
+  function enteredText (text){
+    console.log(text)
+  }
+  function addGoal (add){
+    console.log(add)
+  }
   return (
     <View style={styles.appContainer}>
       <View style={styles.inputContainer}>
-        <TextInput style={styles.textInput} placeholder='enter a goal'/>
-        <Button title='add goal'/>
+        <TextInput style={styles.textInput} 
+        placeholder='enter a goal'
+        onChangeText={enteredText}/>
+        <Button 
+        title='add goal'
+        onPress={addGoal}/>
       </View>
       <View style={styles.goals}>
         <Text>list of goals </Text>
@@ -43,6 +53,6 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   goals:{
-    flex:5
+    flex:5 
   }
 })
