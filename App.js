@@ -28,7 +28,7 @@ export default function App() {
       <Text >list of goals </Text>
       <FlatList data={updateGoal} renderItem={(itemData) => {
         return(
-          <GoalItem />
+          <GoalItem items = {itemData}/>
         )
       }}/>
       </View> 
