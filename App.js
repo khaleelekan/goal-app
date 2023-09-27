@@ -10,7 +10,8 @@ export default function App() {
     setInputText(text)
   }
   function addGoal (){
-    setUpdateGoal((updateGoal) => [...updateGoal, inputText] )
+    setUpdateGoal((updateGoal) => [...updateGoal,
+      { text:inputText , key:Math.random().toString}] )
   }
   return (
     <View style={styles.appContainer}>
@@ -23,15 +24,15 @@ export default function App() {
         onPress={addGoal}/>
       </View>
       <View style={styles.goals}>
-      <Text>list of goals </Text>
-      <FlatList data={updateGoal}>
-        {updateGoal.map((goal) => (
-        <View key={goal} style={styles.goalItem}>
-        <Text  style={styles.goalText}>{updateGoal.text}</Text>
-         </View>
-         ))}
-          </FlatList>
-      </View>
+      <Text >list of goals </Text>
+      <FlatList data={updateGoal} renderItem={(itemData) => {
+        return(
+          <View style={styles.goalItem}>
+          <Text  style={styles.goalText}>{itemData.item.text}</Text>
+           </View>
+        )
+      }}/>
+      </View> 
     </View>
   );
 }
