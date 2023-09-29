@@ -1,14 +1,17 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View,FlatList} from 'react-native';
+import { StyleSheet, Text, View,FlatList,Button} from 'react-native';
 import { useState } from 'react';
 import { GoalItem } from './components/GoalItem';
 import { GoalInput } from './components/GoalInput';
 
 
 export default function App() {
-  
+  const [Modal, setModal] = useState(false)
   const [updateGoal,setUpdateGoal] = useState([]);
  
+  function newGoal(){
+    setModal(true)
+  }
   function addGoal (inputText){
     setUpdateGoal((updateGoal) => [...updateGoal,
       { text:inputText , id : Math.random().toString}] );
@@ -22,9 +25,12 @@ export default function App() {
   }
   return (
     <View style={styles.appContainer}>
-      <GoalInput add={addGoal}/>
+      <Button 
+      title='add new goal' 
+      color="blue"
+      onPress={newGoal}/>
+      <GoalInput add={addGoal} visible={Modal}/>
       <View style={styles.goals}>
-      <Text >list of goals </Text>
       <FlatList data={updateGoal} renderItem={(itemData) => {
         return(
           <GoalItem items = {itemData}
