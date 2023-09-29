@@ -19,9 +19,14 @@ export const GoalInput = ({ add , visible}) => {
       onChangeText={enteredText}
       value={inputText}
       />
+      <View style={styles.buttonContainer}>
       <Button 
       title='add goal'
       onPress={addHandler}/>
+      <Button 
+      title='cancel'
+      onPress={addHandler}/>
+      </View>
     </View>
     </Modal>
   )
@@ -29,9 +34,8 @@ export const GoalInput = ({ add , visible}) => {
 
 const styles = StyleSheet.create({
     inputContainer:{
-        flexDirection: 'row',
         flex: 1,
-        justifyContent: 'space-between',
+        justifyContent: 'center',
         alignItems: 'center',
         borderBottomWidth: 2,
         borderBottomColor: '#ccccc',
@@ -46,4 +50,8 @@ const styles = StyleSheet.create({
         marginRight: 8,
         borderRadius: 8,
       },
+      buttonContainer:{
+        marginTop: 12,
+        flexDirection: 'row'
+      }
 })
