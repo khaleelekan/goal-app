@@ -12,6 +12,9 @@ export default function App() {
   function newGoal(){
     setModal(true)
   }
+  function endNewGoal (){
+    setModal(false)
+  }
   function addGoal (inputText){
     setUpdateGoal((updateGoal) => [...updateGoal,
       { text:inputText , id : Math.random().toString}] );
@@ -29,7 +32,7 @@ export default function App() {
       title='add new goal' 
       color="blue"
       onPress={newGoal}/>
-      <GoalInput add={addGoal} visible={Modal}/>
+      <GoalInput add={addGoal} visible={Modal} onCancel={endNewGoal}/>
       <View style={styles.goals}>
       <FlatList data={updateGoal} renderItem={(itemData) => {
         return(
